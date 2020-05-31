@@ -44,5 +44,5 @@ void Recording::set_title(std::string new_title) {
 
 
 std::string Recording::get_as_string() {
-	return title + ", " + location + ", " + time_of_creation + ", " + to_string(times_accessed) + ", " + footage_preview;
+    return title + ", " + location + ", " + time_of_creation + ", " + to_string(times_accessed) + ", " + footage_preview;
 }

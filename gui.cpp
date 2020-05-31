@@ -36,10 +36,13 @@ void GUI::initGUI() {
     QVBoxLayout* playlist_layout = new QVBoxLayout();
     QFormLayout* element_addition_form = new QFormLayout();
     QGridLayout* buttons_layout = new QGridLayout();
+    QString visualization_text("Visualize playlist in a table view");
+    this->playlist_visualization_button = new QPushButton(visualization_text);
 
 
     QLabel* playlist_label = new QLabel("Playlist:");
     this->playlist_widget = new QListWidget();
+    playlist_layout->addWidget(playlist_visualization_button);
     playlist_layout->addWidget(playlist_label);
     playlist_layout->addWidget(playlist_widget);
 
@@ -145,6 +148,7 @@ void GUI::add_recording_button_handler() {
     string time_of_creation = this->time_of_creation_edit->text().toStdString();
     string times_accessed = this->times_accessed_edit->text().toStdString();
     string footage_preview = this->footage_preview_edit->text().toStdString();
+
     vector<string> operation = {"delete", title, location, time_of_creation, times_accessed, footage_preview};
 
     try {

@@ -9,6 +9,8 @@
 #include <QFormLayout>
 #include <QLineEdit>
 #include <QDebug>
+#include "recordingstablemodel.h"
+#include <QTableView>
 
 
 class GUI : public QWidget
@@ -36,7 +38,13 @@ public:
     ~GUI();
 
 private:
+    void setupTableView();
+
+private:
+    RecordingsTableModel* table_model;
     Service* service;
+
+    QTableView* table_view;
     QListWidget* recordings_list;
     QListWidget* playlist_widget;
     QLineEdit* title_edit;
@@ -52,6 +60,7 @@ private:
     QPushButton* next_button; 
     QPushButton* undo_button;
     QPushButton* redo_button;
+    QPushButton* playlist_visualization_button;
 };
 
 

@@ -34,7 +34,8 @@ SOURCES += \
     tests.cpp \
     ui.cpp \
     validator.cpp \
-    dialog.cpp
+    dialog.cpp \
+    recordingstablemodel.cpp
 
 HEADERS += \
         gui.h \
@@ -46,7 +47,8 @@ HEADERS += \
     tests.h \
     ui.h \
     validator.h \
-    dialog.h
+    dialog.h \
+    recordingstablemodel.h
 
 FORMS += \
         gui.ui \

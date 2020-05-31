@@ -34,10 +34,8 @@ int main(int argc, char *argv[])
             for (auto token: tokens) {
                 token = StringFunctions::strip(token);
             }
-
-            if (tokens[0] == "repo_type") {
-                repo_type = tokens[1];
-            }
+            qDebug() << QString::fromStdString(std::to_string(tokens.size()));
+            repo_type = tokens[1];
 
             qDebug() << QString::fromStdString(line);
         }

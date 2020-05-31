@@ -15,6 +15,7 @@ class Repository {
     public:
         virtual void add(Recording r) = 0;
         virtual void remove(string title) = 0;
+        virtual vector<Recording> get_container() = 0;
         virtual vector<Recording> get_watchlist() = 0;
         virtual string next() = 0;
         virtual void save(string title) = 0;
