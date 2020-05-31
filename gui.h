@@ -47,7 +47,9 @@ private:
     QPushButton* delete_button;
     QPushButton* add_to_playlist_button;
     QPushButton* play_button;
-    QPushButton* next_button;
+    QPushButton* next_button; 
+    QPushButton* undo_button;
+    QPushButton* redo_button;
 };
 
 

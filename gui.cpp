@@ -64,6 +64,14 @@ void GUI::initGUI() {
     this->delete_button = new QPushButton(delete_text);
     buttons_layout->addWidget(delete_button, 1, 3);
 
+    QString undo_text("Undo");
+    this->undo_button = new QPushButton(undo_text);
+    buttons_layout->addWidget(undo_button, 2, 1);
+
+    QString redo_text("Redo");
+    this->redo_button= new QPushButton(redo_text);
+    buttons_layout->addWidget(redo_button, 2, 3);
+
     QString add_to_playlist_text(">> Save >>");
     this->add_to_playlist_button = new QPushButton(add_to_playlist_text);
     queue_button_layout->addWidget(add_to_playlist_button);
