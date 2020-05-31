@@ -1,3 +1,4 @@
 repo_type=FileRepository
-# To change the repository type to a memory repository, simply replace "FileRepository"
-# with "MemoryRepository"
+# To change the repository type to a file repository, simply replace "MemoryRepository"
+# with "FileRepository"
+

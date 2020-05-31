@@ -224,16 +224,71 @@ void Service::undo() {
 
     vector<string> operation = this->pop_from_undo_stack();		
 
-    for (auto token: operation) {
-        qDebug() << QString::fromStdString(token);
-    }
-
     if (operation[0] == "add") {
         this->add(operation[1], operation[2], operation[3], operation[4], operation[5]);
+        vector<string> redo_operation = {"delete", operation[1], operation[2], operation[3], operation[4], operation[5]};
+        redo_stack.push(redo_operation);
     } else if (operation[0] == "delete") {
         this->remove(operation[1]);
+        vector<string> redo_operation = {"add", operation[1], operation[2], operation[3], operation[4], operation[5]};
+        redo_stack.push(redo_operation);
     } else if (operation[0] == "update") {
+        vector<Recording> container = this->get_repository_container();
+        Recording searched_recording;
+        for (auto recording: container) {
+            if (recording.get_title() == operation[1]) {
+                searched_recording = recording;
+                break;
+            }
+        }
         this->update(operation[1], operation[2], operation[3], operation[4], operation[5]);
+
+        vector<string> redo_operation = {"update", searched_recording.get_title(),
+                                        searched_recording.get_location(),
+                                        searched_recording.get_time_of_creation(),
+                                        std::to_string(searched_recording.get_times_accessed()),
+                                        searched_recording.get_footage_preview()};
+        redo_stack.push(redo_operation);
     }
 }
 
+
+void Service::redo() {
+    if (redo_stack.empty())
+        return;
+
+    vector<string> operation = redo_stack.top();
+    redo_stack.pop();
+
+    if (operation[0] == "add") {
+        this->add(operation[1], operation[2], operation[3], operation[4], operation[5]);
+        vector<string> redo_operation = {"delete", operation[1], operation[2], operation[3], operation[4], operation[5]};
+        undo_stack.push(redo_operation);
+    } else if (operation[0] == "delete") {
+        this->remove(operation[1]);
+        vector<string> redo_operation = {"add", operation[1], operation[2], operation[3], operation[4], operation[5]};
+
+        for (auto token: redo_operation) {
+            qDebug() << QString::fromStdString(token);
+        }
+
+        undo_stack.push(redo_operation);
+    } else if (operation[0] == "update") {
+        vector<Recording> container = this->get_repository_container();
+        Recording searched_recording;
+        for (auto recording: container) {
+            if (recording.get_title() == operation[1]) {
+                searched_recording = recording;
+                break;
+            }
+        }
+        this->update(operation[1], operation[2], operation[3], operation[4], operation[5]);
+
+        vector<string> redo_operation = {"update", searched_recording.get_title(),
+                                        searched_recording.get_location(),
+                                        searched_recording.get_time_of_creation(),
+                                        std::to_string(searched_recording.get_times_accessed()),
+                                        searched_recording.get_footage_preview()};
+        undo_stack.push(redo_operation);
+    }
+}

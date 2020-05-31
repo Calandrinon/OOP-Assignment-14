@@ -145,7 +145,7 @@ void GUI::add_recording_button_handler() {
     string time_of_creation = this->time_of_creation_edit->text().toStdString();
     string times_accessed = this->times_accessed_edit->text().toStdString();
     string footage_preview = this->footage_preview_edit->text().toStdString();
-    vector<string> operation = {"delete", title};
+    vector<string> operation = {"delete", title, location, time_of_creation, times_accessed, footage_preview};
 
     try {
         string message =  title + " " + location + " " + time_of_creation + " " + times_accessed + " " +footage_preview;
@@ -391,7 +391,8 @@ void GUI::undo_button_handler() {
 
 
 void GUI::redo_button_handler() {
-
+    service->redo();
+    this->add_recordings_to_list_widget();
 }
 
 
