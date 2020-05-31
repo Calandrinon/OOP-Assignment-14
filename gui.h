@@ -31,6 +31,8 @@ public:
     void update_current_recording(); 
     void next_recording_button_handler();
     void play_recording_button_handler();
+    void undo_button_handler();
+    void redo_button_handler();
     ~GUI();
 
 private:

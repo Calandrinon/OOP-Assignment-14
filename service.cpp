@@ -216,3 +216,24 @@ vector<string> Service::pop_from_undo_stack() {
     undo_stack.pop();
     return operation;
 }
+
+
+void Service::undo() {
+    if (undo_stack.empty())
+        return;
+
+    vector<string> operation = this->pop_from_undo_stack();		
+
+    for (auto token: operation) {
+        qDebug() << QString::fromStdString(token);
+    }
+
+    if (operation[0] == "add") {
+        this->add(operation[1], operation[2], operation[3], operation[4], operation[5]);
+    } else if (operation[0] == "delete") {
+        this->remove(operation[1]);
+    } else if (operation[0] == "update") {
+        this->update(operation[1], operation[2], operation[3], operation[4], operation[5]);
+    }
+}
+

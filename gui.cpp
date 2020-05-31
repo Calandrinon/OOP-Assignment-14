@@ -132,6 +132,10 @@ void GUI::connect_signals_and_slots() {
     QObject::connect(this->next_button, &QPushButton::clicked, this, &GUI::next_recording_button_handler);
 
     QObject::connect(this->play_button, &QPushButton::clicked, this, &GUI::play_recording_button_handler);
+
+    QObject::connect(this->undo_button, &QPushButton::clicked, this, &GUI::undo_button_handler);
+
+    QObject::connect(this->redo_button, &QPushButton::clicked, this, &GUI::redo_button_handler);
 }
 
 
@@ -175,10 +179,14 @@ void GUI::update_recording_button_handler() {
                                searched_recording.get_time_of_creation(),
                                std::to_string(searched_recording.get_times_accessed()),
                                searched_recording.get_footage_preview()};
+    for (auto token: operation) {
+        qDebug() << QString::fromStdString(token);
+    }
 
     try {
         string message =  title + " " + location + " " + time_of_creation + " " + times_accessed + " " +footage_preview;
         service->update(title, location, time_of_creation, times_accessed, footage_preview);
+        service->push_to_undo_stack(operation);
     } catch (...) {
 
     }
@@ -373,6 +381,17 @@ void GUI::play_recording_button_handler() {
     vector<Recording> watchlist = service->get_watchlist();
     service->remove_from_watchlist(current_index);
     add_recordings_to_playlist();
+}
+
+
+void GUI::undo_button_handler() {
+    service->undo();
+    this->add_recordings_to_list_widget();
+}
+
+
+void GUI::redo_button_handler() {
+
 }
 
 

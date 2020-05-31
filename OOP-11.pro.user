@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.8.2, 2020-05-31T10:39:40. -->
+<!-- Written by QtCreator 4.8.2, 2020-05-31T16:56:52. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -294,8 +294,8 @@
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">OOP-11</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">OOP-112</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:/home/calandrinon/Documents/an1sem2/OOP/OOP-Assignment-11-12/OOP-11.pro</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:/home/calandrinon/Documents/an1sem2/OOP/OOP-Assignment-14/OOP-11.pro</value>
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.ProFile">OOP-11.pro</value>
     <value type="QString" key="RunConfiguration.Arguments"></value>
     <value type="uint" key="RunConfiguration.QmlDebugServerPort">3768</value>

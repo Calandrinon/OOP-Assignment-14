@@ -36,5 +36,7 @@ class Service {
         void set_selected_recording_index(int new_index);
         void push_to_undo_stack(vector<string> operation);
         vector<string> pop_from_undo_stack();
+        void undo();
+        void redo();
         ~Service();
 };
