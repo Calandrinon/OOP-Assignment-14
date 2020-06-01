@@ -1,11 +1,14 @@
 #include "recordingstablemodel.h"
+#include <QDebug>
 
-RecordingsTableModel::RecordingsTableModel(Repository* _repository, QObject* parent): QAbstractTableModel(parent), repository(_repository){}
+RecordingsTableModel::RecordingsTableModel(vector<Recording> container, QObject* parent): QAbstractTableModel(parent) {
+    this->container = container;
+}
 RecordingsTableModel::~RecordingsTableModel() {}
 
 
 int RecordingsTableModel::rowCount(const QModelIndex &parent) const {
-    unsigned int number_of_recordings = repository->get_container().size();
+    unsigned int number_of_recordings = container.size();
     return number_of_recordings;
 }
 
@@ -17,15 +20,13 @@ int RecordingsTableModel::columnCount(const QModelIndex &parent) const {
 
 QVariant RecordingsTableModel::data(const QModelIndex& index, int role) const {
     int row = index.row();
-    int column = index.column();
+    int column = index.column(); 
 
-    vector<Recording> recordings = repository->get_container();
-
-    if (row == recordings.size()) {
+    if (row == container.size()) {
         return QVariant();
     }
 
-    Recording recording = recordings[row];
+    Recording recording = container[row];
 
     if (role == Qt::DisplayRole || role == Qt::EditRole) {
         switch (column) {

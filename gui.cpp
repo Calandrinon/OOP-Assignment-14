@@ -404,7 +404,13 @@ void GUI::redo_button_handler() {
 
 
 void GUI::playlist_visualization_button_handler() {
-    PlaylistVisualization visualization(service->get_pointer_to_repo());
+    vector<Recording> container = service->get_repository_container();
+    qDebug() << "From playlist_visualization handler";
+    for (auto object: container) {
+        qDebug() << QString::fromStdString(object.get_as_string());
+    }
+
+    PlaylistVisualization visualization(container);
     visualization.setModal(true);
     visualization.exec();
 }

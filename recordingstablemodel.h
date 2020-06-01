@@ -5,10 +5,10 @@
 
 class RecordingsTableModel: public QAbstractTableModel {
 private:
-    Repository* repository;
+    vector<Recording> container;
 
 public:
-    RecordingsTableModel(Repository* repository, QObject* parent = NULL);
+    RecordingsTableModel(vector<Recording> container, QObject* parent = NULL);
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
     int columnCount(const QModelIndex &parent = QModelIndex()) const override;
     QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const override;

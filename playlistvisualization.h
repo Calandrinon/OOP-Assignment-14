@@ -13,7 +13,7 @@ class PlaylistVisualization : public QDialog
     Q_OBJECT
 
 public:
-    explicit PlaylistVisualization(Repository* _repository, QWidget *parent = nullptr);
+    explicit PlaylistVisualization(vector<Recording> container, QWidget *parent = nullptr);
     ~PlaylistVisualization();
 
 private:

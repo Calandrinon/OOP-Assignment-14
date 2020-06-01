@@ -1,13 +1,12 @@
 #include "playlistvisualization.h"
 #include "ui_playlistvisualization.h"
 
-PlaylistVisualization::PlaylistVisualization(Repository* _repository, QWidget *parent) :
+PlaylistVisualization::PlaylistVisualization(vector<Recording> container, QWidget *parent) :
     QDialog(parent),
-    repository(_repository),
     ui(new Ui::PlaylistVisualization)
 {
     ui->setupUi(this);
-    this->table_model = new RecordingsTableModel(repository);
+    this->table_model = new RecordingsTableModel(container);
     this->setup_table_view();
 }
 
@@ -20,5 +19,6 @@ void PlaylistVisualization::setup_table_view() {
 
 PlaylistVisualization::~PlaylistVisualization()
 {
+    delete table_model;
     delete ui;
 }
