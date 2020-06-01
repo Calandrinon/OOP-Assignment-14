@@ -35,7 +35,8 @@ SOURCES += \
     ui.cpp \
     validator.cpp \
     dialog.cpp \
-    recordingstablemodel.cpp
+    recordingstablemodel.cpp \
+    playlistvisualization.cpp
 
 HEADERS += \
         gui.h \
@@ -48,11 +49,13 @@ HEADERS += \
     ui.h \
     validator.h \
     dialog.h \
-    recordingstablemodel.h
+    recordingstablemodel.h \
+    playlistvisualization.h
 
 FORMS += \
         gui.ui \
-    dialog.ui
+    dialog.ui \
+    playlistvisualization.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

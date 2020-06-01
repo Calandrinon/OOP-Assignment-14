@@ -292,3 +292,9 @@ void Service::redo() {
         undo_stack.push(redo_operation);
     }
 }
+
+
+
+Repository* Service::get_pointer_to_repo() {
+    return repository;
+}

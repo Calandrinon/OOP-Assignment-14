@@ -35,13 +35,13 @@ public:
     void play_recording_button_handler();
     void undo_button_handler();
     void redo_button_handler();
+    void playlist_visualization_button_handler();
     ~GUI();
 
 private:
     void setupTableView();
 
 private:
-    RecordingsTableModel* table_model;
     Service* service;
 
     QTableView* table_view;

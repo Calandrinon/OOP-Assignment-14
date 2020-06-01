@@ -1,6 +1,7 @@
 #include "gui.h"
 #include <iostream>
 #include <vector>
+#include "playlistvisualization.h"
 using namespace std;
 
 GUI::GUI(Service* _service, QWidget *parent) :
@@ -139,6 +140,8 @@ void GUI::connect_signals_and_slots() {
     QObject::connect(this->undo_button, &QPushButton::clicked, this, &GUI::undo_button_handler);
 
     QObject::connect(this->redo_button, &QPushButton::clicked, this, &GUI::redo_button_handler);
+
+    QObject::connect(this->playlist_visualization_button, &QPushButton::clicked, this, &GUI::playlist_visualization_button_handler);
 }
 
 
@@ -397,6 +400,13 @@ void GUI::undo_button_handler() {
 void GUI::redo_button_handler() {
     service->redo();
     this->add_recordings_to_list_widget();
+}
+
+
+void GUI::playlist_visualization_button_handler() {
+    PlaylistVisualization visualization(service->get_pointer_to_repo());
+    visualization.setModal(true);
+    visualization.exec();
 }
 
 

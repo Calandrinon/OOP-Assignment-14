@@ -38,5 +38,6 @@ class Service {
         vector<string> pop_from_undo_stack();
         void undo();
         void redo();
+        Repository* get_pointer_to_repo();
         ~Service();
 };
