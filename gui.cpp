@@ -404,7 +404,7 @@ void GUI::redo_button_handler() {
 
 
 void GUI::playlist_visualization_button_handler() {
-    vector<Recording> container = service->get_repository_container();
+    vector<Recording> container = service->get_watchlist();
     qDebug() << "From playlist_visualization handler";
     for (auto object: container) {
         qDebug() << QString::fromStdString(object.get_as_string());

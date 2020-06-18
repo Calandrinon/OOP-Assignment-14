@@ -46,4 +46,6 @@ QVariant RecordingsTableModel::data(const QModelIndex& index, int role) const {
                 return QString::fromStdString(recording.get_footage_preview());
         }
     }
+
+	return QVariant();
 }

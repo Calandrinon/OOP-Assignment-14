@@ -7,18 +7,9 @@ PlaylistVisualization::PlaylistVisualization(vector<Recording> container, QWidge
 {
     ui->setupUi(this);
     this->table_model = new RecordingsTableModel(container);
-    this->setup_table_view();
-}
-
-
-void PlaylistVisualization::setup_table_view() {
     ui->tableView->setModel(table_model);
 }
 
-
-
 PlaylistVisualization::~PlaylistVisualization()
 {
-    delete table_model;
-    delete ui;
 }
